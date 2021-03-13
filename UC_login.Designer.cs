@@ -41,10 +41,11 @@ namespace laptopmanagementshop
             this.txtUsername = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtPassword = new Guna.UI2.WinForms.Guna2TextBox();
             this.btnLogin = new Guna.UI2.WinForms.Guna2Button();
-            this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
             this.rectangleShape1 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
             this.ToShowLabel = new System.Windows.Forms.Label();
             this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -52,7 +53,7 @@ namespace laptopmanagementshop
             // guna2WinProgressIndicator1
             // 
             this.guna2WinProgressIndicator1.CircleSize = 4F;
-            this.guna2WinProgressIndicator1.Location = new System.Drawing.Point(558, 146);
+            this.guna2WinProgressIndicator1.Location = new System.Drawing.Point(411, 154);
             this.guna2WinProgressIndicator1.Name = "guna2WinProgressIndicator1";
             this.guna2WinProgressIndicator1.ProgressColor = System.Drawing.Color.White;
             this.guna2WinProgressIndicator1.Size = new System.Drawing.Size(232, 232);
@@ -63,7 +64,7 @@ namespace laptopmanagementshop
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(610, 432);
+            this.label1.Location = new System.Drawing.Point(450, 437);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(180, 20);
             this.label1.TabIndex = 2;
@@ -83,7 +84,7 @@ namespace laptopmanagementshop
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.shapeContainer1);
             this.panel1.ForeColor = System.Drawing.Color.Black;
-            this.panel1.Location = new System.Drawing.Point(389, 3);
+            this.panel1.Location = new System.Drawing.Point(229, 34);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(578, 637);
             this.panel1.TabIndex = 3;
@@ -157,6 +158,7 @@ namespace laptopmanagementshop
             this.txtUsername.Size = new System.Drawing.Size(295, 37);
             this.txtUsername.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.txtUsername.TabIndex = 4;
+            this.txtUsername.TextChanged += new System.EventHandler(this.txtUsername_TextChanged);
             // 
             // txtPassword
             // 
@@ -177,7 +179,7 @@ namespace laptopmanagementshop
             this.txtPassword.Location = new System.Drawing.Point(138, 428);
             this.txtPassword.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.PasswordChar = '\0';
+            this.txtPassword.PasswordChar = '*';
             this.txtPassword.PlaceholderText = "Enter Password";
             this.txtPassword.SelectedText = "";
             this.txtPassword.ShadowDecoration.Parent = this.txtPassword;
@@ -204,23 +206,13 @@ namespace laptopmanagementshop
             this.btnLogin.Size = new System.Drawing.Size(129, 34);
             this.btnLogin.TabIndex = 6;
             this.btnLogin.Text = "Login";
-            // 
-            // shapeContainer1
-            // 
-            this.shapeContainer1.Location = new System.Drawing.Point(0, 0);
-            this.shapeContainer1.Margin = new System.Windows.Forms.Padding(0);
-            this.shapeContainer1.Name = "shapeContainer1";
-            this.shapeContainer1.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
-            this.rectangleShape1});
-            this.shapeContainer1.Size = new System.Drawing.Size(578, 637);
-            this.shapeContainer1.TabIndex = 7;
-            this.shapeContainer1.TabStop = false;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // rectangleShape1
             // 
             this.rectangleShape1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.rectangleShape1.BorderWidth = 3;
-            this.rectangleShape1.Location = new System.Drawing.Point(8, 5);
+            this.rectangleShape1.Location = new System.Drawing.Point(9, 8);
             this.rectangleShape1.Name = "rectangleShape1";
             this.rectangleShape1.Size = new System.Drawing.Size(752, 914);
             // 
@@ -240,6 +232,21 @@ namespace laptopmanagementshop
             // 
             this.guna2Elipse1.BorderRadius = 26;
             this.guna2Elipse1.TargetControl = this;
+            // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // shapeContainer1
+            // 
+            this.shapeContainer1.Location = new System.Drawing.Point(0, 0);
+            this.shapeContainer1.Margin = new System.Windows.Forms.Padding(0);
+            this.shapeContainer1.Name = "shapeContainer1";
+            this.shapeContainer1.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
+            this.rectangleShape1});
+            this.shapeContainer1.Size = new System.Drawing.Size(578, 637);
+            this.shapeContainer1.TabIndex = 7;
+            this.shapeContainer1.TabStop = false;
             // 
             // UC_login
             // 
@@ -273,8 +280,9 @@ namespace laptopmanagementshop
         private Guna.UI2.WinForms.Guna2TextBox txtUsername;
         private Guna.UI2.WinForms.Guna2Button btnLogin;
         private System.Windows.Forms.Label ToShowLabel;
-        private Microsoft.VisualBasic.PowerPacks.ShapeContainer shapeContainer1;
         private Microsoft.VisualBasic.PowerPacks.RectangleShape rectangleShape1;
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse1;
+        private System.Windows.Forms.Timer timer1;
+        private Microsoft.VisualBasic.PowerPacks.ShapeContainer shapeContainer1;
     }
 }

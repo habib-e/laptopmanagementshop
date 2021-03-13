@@ -29,6 +29,8 @@ namespace laptopmanagementshop
         
         private void Form1_Load(object sender, EventArgs e)
         {
+            panel1.Visible = false;
+
             uC_AddNewPhone1.Visible = false;
             uC_Customer1.Visible = false;
             uC_Stock1.Visible = false;
@@ -120,6 +122,18 @@ namespace laptopmanagementshop
         {
             uC_Accessories_Stock1.Visible = true;
             uC_Accessories_Stock1.BringToFront();
+        }
+
+        private void panel1_VisibleChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void uC_login1_VisibleChanged(object sender, EventArgs e)
+        {
+            panel1.Visible = true;
+            btnAddNewPhone.PerformClick();
+
         }
     }
 }

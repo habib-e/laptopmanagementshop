@@ -15,6 +15,7 @@ namespace laptopmanagementshop
         public UC_login()
         {
             InitializeComponent();
+            ToShowLabel.Visible = false;
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -48,6 +49,38 @@ namespace laptopmanagementshop
         }
 
         private void txtPassword_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            this.timer1.Start();
+            panel1.Visible = false;
+            this.guna2WinProgressIndicator1.Start();
+        }
+        int abc = 0;
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            abc++;
+            if (abc == 10)
+            {
+                abc = 0;
+                if(txtUsername.Text=="admin" && txtPassword.Text == "admin")
+                {
+                    this.Hide();
+                    timer1.Stop();
+                }
+                else
+                {
+                    panel1.Visible = true;
+                    ToShowLabel.Visible = true;
+                    timer1.Stop();
+                }
+            }
+
+        }
+
+        private void txtUsername_TextChanged(object sender, EventArgs e)
         {
 
         }
